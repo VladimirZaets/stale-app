@@ -1,7 +1,14 @@
+const _includes = require('lodash/includes');
+
 class IssuesFilters {
   filterAssignedBefore(issue, date) {
     issue.assignees = issue.assignees
       .filter(node => !!((new Date(node.assignedAt)).getTime() < (new Date(date)).getTime()));
+    return issue;
+  }
+
+  filterUsersInWhiteList(issue, date, whiteList) {
+    issue.assignees = issue.assignees.filter(node => !(_includes(whiteList, node.login)));
     return issue;
   }
 

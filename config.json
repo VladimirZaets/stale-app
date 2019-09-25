@@ -1,0 +1,6 @@
+{
+  "magento2": {
+    "ALLOWED_UNACTIVE_PERIOD_DAYS": 14,
+    "USERS_WHITE_LIST": []
+  }
+}

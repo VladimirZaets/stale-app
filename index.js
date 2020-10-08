@@ -36,8 +36,6 @@ module.exports = app => {
     References: ${user.references.length}
   `;
 
-
-
         if (!user.labels.length && !user.comments.length && !user.references.length) {
            app.log.info(
              `Unasigned user ${user.login} from issue ${organization}/${repository}/${issue.number}

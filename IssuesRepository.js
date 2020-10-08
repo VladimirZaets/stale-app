@@ -72,7 +72,7 @@ class IssuesRepository {
         }
       }
     }`;
-    
+
     do {
       const res = await graphql(query, {
         organization: this.organization,
@@ -116,7 +116,7 @@ class IssuesRepository {
   }
 
   filterLabeledByUser(labels, login) {
-    return labels.filter(elem => elem.actor.login === login).map(element => ({
+    return labels.filter(elem => elem.actor && elem.actor.login === login).map(element => ({
       labeledAt: element.createdAt,
       id: element.label.id,
       name: element.label.name
@@ -130,7 +130,7 @@ class IssuesRepository {
   }
 
   filterReferencedByUser(references, login) {
-    return references.filter(elem => elem.actor.login === login).map(element => ({
+    return references.filter(elem => elem.actor && elem.actor.login === login).map(element => ({
       type: element.source.__typename,
       title: element.source.title,
       state: element.source.state,
